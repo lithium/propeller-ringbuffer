@@ -1,14 +1,17 @@
 CC=propeller-elf-gcc
 AR=propeller-elf-ar
-CFLAGS=-Os -m32bit-doubles -fno-exceptions -std=c99 -mcog
+CFLAGS=-Os -m32bit-doubles -fno-exceptions -std=c99 -mlmm
 
 INCLUDES=-Iinclude
 SRC=src
 BUILD=build
+TEST=test
 SOURCES = $(wildcard $(SRC)/*.c)
 OBJECTS = $(patsubst $(SRC)/%.c, $(BUILD)/%.o, $(SOURCES))
 
 OUT=$(BUILD)/ringbuffer.a
+
+.PHONY: test
 
 all: $(BUILD) $(OUT)
 
@@ -23,3 +26,6 @@ $(OUT): $(OBJECTS)
 
 clean:
 	rm -rf $(OBJECTS) $(BUILD) $(OUT)
+
+test:
+	$(MAKE) -C $(TEST)
