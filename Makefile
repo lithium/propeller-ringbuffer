@@ -1,6 +1,6 @@
 CC=propeller-elf-gcc
 AR=propeller-elf-ar
-CFLAGS=-Os -m32bit-doubles -fno-exceptions -std=c99 -mlmm -ffunction-sections -fdata-sections -Wl,--gc-sections
+CFLAGS=-Os -m32bit-doubles -mfcache -fno-exceptions -std=c99 -mlmm -ffunction-sections -fdata-sections -Wl,--gc-sections -Dprintf=__simple_printf
 
 INCLUDES=-Iinclude
 SRC=src
