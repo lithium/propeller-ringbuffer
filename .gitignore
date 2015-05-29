@@ -2,3 +2,4 @@
 *.a
 .*.sw*
 build
+test/ringbuffer-test

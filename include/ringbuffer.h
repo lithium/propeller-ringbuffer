@@ -8,12 +8,10 @@
 
 
 typedef struct ringbuffer_t {
-  void *buffer;            // buffer should be entry_size*buffer_capacity bytes
-  uint8_t entry_size;       // size of each individual entry
-  uint8_t buffer_capacity;  // number of entries
+  uint32_t *buffer;             // buffer should be sizeof(uint32)*buffer_capacity bytes
+  uint8_t buffer_capacity;    
   uint8_t in,out;
-
-  uint8_t queue_count;      // number of entries currently enqueued
+  uint8_t queue_count;          // number of entries currently enqueued
 
   int lockId;
 } RingBuffer;
@@ -25,7 +23,7 @@ typedef struct ringbuffer_t {
  *  Returns
  *   0 - Success
  */
-int RingBuffer_init(RingBuffer *rbuf, void *buffer, uint8_t entry_size, uint8_t buffer_capacity);
+int RingBuffer_init(RingBuffer *rbuf, uint32_t *buffer, uint8_t buffer_capacity);
 void RingBuffer_destroy(RingBuffer *rbuf);
 
 
